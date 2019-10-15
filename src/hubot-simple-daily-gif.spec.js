@@ -1,16 +1,16 @@
-const sut = require('./hubot-simple-daily-gif');
-const wordList = require('./word-list.json');
-const daysOfWeek = [
-  'sunday',
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday'
-];
-
 describe('hubot-simple-gif', () => {
+  const sut = require('./hubot-simple-daily-gif');
+  const wordList = require('./word-list.json');
+  const daysOfWeek = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
+  ];
+
   describe('#_getRandomWord', () => {
     it('should return a random word', () => {
       const randomWord = sut._getRandomWord();
@@ -29,12 +29,11 @@ describe('hubot-simple-gif', () => {
     });
   });
 
-  // TODO properly mock out axios to better test
   describe('#getGif', () => {
-    it('should return a Promise', () => {
-      sut.getGif('dummy query').then(result => {
-        expect(result).toBeTruthy();
-      });
+    it('should resolve to a URL string', () => {
+      return sut
+        .getGif('dummy query')
+        .then(result => expect(result).toBe('gif.link'));
     });
   });
 });
