@@ -32,7 +32,7 @@ function getGif() {
   const query = `${_getDayOfWeek()} ${_getRandomWord()}`;
   return axios
     .get(`http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}`)
-    .then(gifList => gifList.data.data[0].url);
+    .then(gifList => gifList.data[0].url);
 }
 
 module.exports = { getGif, _getDayOfWeek, _getRandomWord };
