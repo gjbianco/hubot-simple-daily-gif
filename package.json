@@ -1,6 +1,6 @@
 {
   "name": "hubot-simple-daily-gif",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "simple daily gif posting",
   "main": "index.js",
   "repository": "https://github.com/gjbianco/hubot-simple-daily-gif",
