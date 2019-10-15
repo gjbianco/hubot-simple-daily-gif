@@ -11,20 +11,18 @@ module.exports = robot => {
         break;
       case 'on':
         // run and turn on
-        _runScript();
+        getGif()
+          .then(response => res.send(response))
+          .catch(err => {
+            console.error(`got an error: ${err}`);
+            intervall = null;
+            res.send('error occurred trying to get daily gif D:');
+          });
+
         interval = setInterval(_runScript, 24 * 60 * 60 * 1000); // 24 hours in ms
         break;
       default:
         res.send(`daily gif is turned ${interval ? 'on' : 'off'}`);
     }
   });
-
-  function _runScript() {
-    getGif()
-      .then(response => res.send(response))
-      .catch(err => {
-        console.error(`got an error: ${err}`);
-        res.send('error occurred trying to get daily gif D:');
-      });
-  }
 };
